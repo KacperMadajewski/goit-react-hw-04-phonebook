@@ -17,27 +17,25 @@ export const App = () => {
     );
     existingName
       ? alert(`Unfortunately name: ${name} allready exist in this contacts!`)
-      : setContacts({
-          contacts: [...contacts, { name: name, number: number, id: nanoid() }],
-        });
+      : setContacts(prevContacts => [
+          ...prevContacts,
+          { name: name, number: number, id: nanoid() },
+        ]);
   }
 
   function handleChange(ev) {
     if (ev.target.name === 'name') {
-      setName({ name: name });
+      setName(ev.target.value);
     } else if (ev.target.name === 'number') {
-      setNumber({ number: number });
+      setNumber(ev.target.value);
     } else {
-      setFilter({ filter: filter });
+      setFilter(ev.target.value);
     }
   }
 
   function forDelet(id) {
     const actualContacts = contacts.filter(contact => contact.id !== id);
-
-    setContacts({
-      contacts: actualContacts,
-    });
+    setContacts(actualContacts);
   }
 
   return (
@@ -61,7 +59,7 @@ export const App = () => {
 
       <h2>Contacts</h2>
       <Filter onChange={handleChange} filter={filter} />
-      <ContactsList contact={contacts} filter={filter} forDelet={forDelet} />
+      <ContactsList contacts={contacts} filter={filter} forDelet={forDelet} />
     </div>
   );
 };
