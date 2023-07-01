@@ -2,7 +2,7 @@ import { ContactsForm } from './ContactsForm/ContactsForm';
 import { ContactsList } from './ContactsList/ContactsList';
 import { nanoid } from 'nanoid';
 import { Filter } from './Filter/Filter';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const App = () => {
   const [contacts, setContacts] = useState([]);
@@ -38,6 +38,18 @@ export const App = () => {
     setContacts(actualContacts);
   }
 
+  useEffect(() => {
+    const contacts2 = localStorage.getItem('phoneContact');
+    const parsedContacts = JSON.parse(contacts2);
+    if (parsedContacts) {
+      setContacts(parsedContacts);
+    }
+  }, [contacts]);
+
+  useEffect(() => {
+    localStorage.setItem('phoneContact', JSON.stringify(contacts));
+  }, [contacts]);
+
   return (
     <div
       style={{
@@ -47,6 +59,7 @@ export const App = () => {
         alignItems: 'center',
         fontSize: 40,
         color: '#010101',
+        flexDirection: 'column',
       }}
     >
       <h1>Phonebook</h1>

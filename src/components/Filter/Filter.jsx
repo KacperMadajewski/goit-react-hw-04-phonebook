@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Filter(onChange, filter) {
+export function Filter({ onChange, filter }) {
   return (
     <>
       <span>Finde contacts by name</span>

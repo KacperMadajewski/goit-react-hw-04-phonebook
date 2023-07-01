@@ -1,7 +1,7 @@
 import Styles from './ContactsForm.module.css';
 import React from 'react';
 
-export function ContactsForm(forSubmit, onChange, name, number) {
+export function ContactsForm({ forSubmit, onChange, name, number }) {
   return (
     <form onSubmit={forSubmit} className={Styles.form}>
       <span>Name</span>

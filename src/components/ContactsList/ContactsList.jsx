@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import React from 'react';
 
-export function ContactsList(contacts, filter, forDelet) {
+export function ContactsList({ contacts, filter, forDelet }) {
   return (
     <ul>
       {contacts
