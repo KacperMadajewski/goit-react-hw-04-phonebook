@@ -5,8 +5,11 @@ import { Filter } from './Filter/Filter';
 import { useState, useEffect } from 'react';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
+const [contacts, setContacts] = useState(() => {
+  const contacts2 = localStorage.getItem('phoneContact');
+  const parsedContacts = JSON.parse(contacts2);
+  return parsedContacts ? parsedContacts : [];
+});  const [filter, setFilter] = useState('');
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -44,7 +47,7 @@ export const App = () => {
     if (parsedContacts) {
       setContacts(parsedContacts);
     }
-  }, [contacts]);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('phoneContact', JSON.stringify(contacts));
@@ -53,7 +56,7 @@ export const App = () => {
   return (
     <div
       style={{
-        height: '100vh',
+        height: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
