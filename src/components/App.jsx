@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react';
 
 export const App = () => {
 const [contacts, setContacts] = useState(() => {
-  const contacts2 = localStorage.getItem('phoneContact');
-  const parsedContacts = JSON.parse(contacts2);
+  const localContacts = localStorage.getItem('phoneContact');
+  const parsedContacts = JSON.parse(localContacts);
   return parsedContacts ? parsedContacts : [];
 });  const [filter, setFilter] = useState('');
   const [name, setName] = useState('');
@@ -42,8 +42,8 @@ const [contacts, setContacts] = useState(() => {
   }
 
   useEffect(() => {
-    const contacts2 = localStorage.getItem('phoneContact');
-    const parsedContacts = JSON.parse(contacts2);
+    const localContacts = localStorage.getItem('phoneContact');
+    const parsedContacts = JSON.parse(localContacts);
     if (parsedContacts) {
       setContacts(parsedContacts);
     }

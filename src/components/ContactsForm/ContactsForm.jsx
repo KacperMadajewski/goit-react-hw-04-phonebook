@@ -1,7 +1,10 @@
 import Styles from './ContactsForm.module.css';
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export function ContactsForm({ forSubmit, onChange, name, number }) {
+
+export function ContactsForm({ forSubmit, onChange, name, number }
+) {
   return (
     <form onSubmit={forSubmit} className={Styles.form}>
       <span>Name</span>
@@ -34,3 +37,10 @@ export function ContactsForm({ forSubmit, onChange, name, number }) {
     </form>
   );
 }
+
+ContactsForm.propTypes = {
+  onChange: PropTypes.func,
+  forSubmit: PropTypes.func,
+  name: PropTypes.any,
+  number: PropTypes.any,
+};

@@ -1,5 +1,7 @@
 import { nanoid } from 'nanoid';
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 export function ContactsList({ contacts, filter, forDelet }) {
   return (
@@ -19,3 +21,9 @@ export function ContactsList({ contacts, filter, forDelet }) {
     </ul>
   );
 }
+
+Filter.propTypes = {
+  contacts: PropTypes.any,
+  filter: PropTypes.any,
+  forDelet: PropTypes.func,
+};
