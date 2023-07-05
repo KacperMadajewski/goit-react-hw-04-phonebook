@@ -22,7 +22,7 @@ export function ContactsList({ contacts, filter, forDelet }) {
   );
 }
 
-Filter.propTypes = {
+ContactsList.propTypes = {
   contacts: PropTypes.any,
   filter: PropTypes.any,
   forDelet: PropTypes.func,
